@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Login - Task Manager</title>
+</head>
+<body class="bg-slate-100 flex items-center justify-center h-screen">
+<div class="bg-white p-8 rounded-xl shadow-lg w-96">
+    <h2 class="text-2xl font-bold mb-6 text-indigo-600">Sign In</h2>
+
+    <div th:if="${param.registered}" class="bg-green-100 text-green-700 p-2 rounded mb-4 text-sm">
+        Registration successful! Please login.
+    </div>
+
+    <div th:if="${param.error}" class="bg-red-100 text-red-700 p-2 rounded mb-4 text-sm">
+        Invalid username or password.
+    </div>
+
+    <form th:action="@{/login}" method="post" class="space-y-4">
+        <input type="text" name="username" placeholder="Username" class="w-full border p-2 rounded" required>
+        <input type="password" name="password" placeholder="Password" class="w-full border p-2 rounded" required>
+        <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded font-bold hover:bg-indigo-700">Sign In</button>
+    </form>
+
+    <p class="mt-4 text-sm text-center">
+        New here? <a href="/register" class="text-indigo-600 hover:underline">Create an account</a>
+    </p>
+</div>
+</body>
+</html>

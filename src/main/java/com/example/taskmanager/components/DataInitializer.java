@@ -19,14 +19,13 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        // Create a default user if not exists
+
         if (userRepo.findByUsername("user") == null) {
             User user = new User();
             user.setUsername("user");
-            user.setPassword("{noop}feb1472e-bb51-432d-8acd-0fd6bde53fcd"); // Uses your current password
+            user.setPassword("{noop}feb1472e-bb51-432d-8acd-0fd6bde53fcd");
             userRepo.save(user);
 
-            // Create a sample project
             Project project = new Project();
             project.setName("College Khaata Project");
             project.setUser(user);
